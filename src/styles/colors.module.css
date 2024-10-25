@@ -1,0 +1,34 @@
+.primaryBg {
+  background-color: #ff642f;
+  color: white;
+}
+
+.secondaryBg {
+  background-color: #e3f1ff;
+  color: black;
+}
+
+.accentBg {
+  background-color: #ffd7c9;
+  color: black;
+}
+
+.neutralBg {
+  background-color: #7f7f7f;
+  color: white;
+}
+
+.light-neutralBg {
+  background-color: #e8e8e8;
+  color: black;
+}
+
+.extra-light-neutralBg {
+  background-color: #f9f9f9;
+  color: black;
+}
+
+.darkBg {
+  background-color: #000000;
+  color: white;
+}

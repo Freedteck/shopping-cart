@@ -1,0 +1,8 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.children {
+  padding: 0 2rem;
+}

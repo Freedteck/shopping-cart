@@ -1,0 +1,26 @@
+.banner {
+  composes: secondaryBg from "../../styles/colors.module.css";
+  height: 489px;
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+}
+
+.bannerImg {
+  composes: extra-light-neutralBg from "../../styles/colors.module.css";
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 70%;
+  flex: 1;
+  flex-shrink: 0;
+}
+
+.bannerText {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+}
