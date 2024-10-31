@@ -53,36 +53,50 @@ const Home = () => {
       <section className={styles.section}>
         <h2>Electronics</h2>
         <div className={styles.row}>
-          {categories.map((category) => (
-            <Card key={category.id} data={category} />
-          ))}
+          {categories ? (
+            categories.map((category) => (
+              <Card key={category.id} data={category} />
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </section>
 
       <section className={styles.section}>
         <h2>Jewelery</h2>
         <div className={styles.row}>
-          {jewelery.map((jewel) => (
-            <Card key={jewel.id} data={jewel} />
-          ))}
+          {jewelery ? (
+            jewelery.map((jewel) => <Card key={jewel.id} data={jewel} />)
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </section>
 
       <section className={styles.section}>
         <h2>Men&lsquo;s Clothings</h2>
         <div className={styles.row}>
-          {mensClothings.map((mensClothing) => (
-            <Card key={mensClothing.id} data={mensClothing} />
-          ))}
+          {mensClothings ? (
+            mensClothings.map((mensClothing) => (
+              <Card key={mensClothing.id} data={mensClothing} />
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </section>
 
       <section className={styles.section}>
         <h2>Women&lsquo;s Clothings</h2>
         <div className={styles.row}>
-          {womenClothings.map((womenClothing) => (
-            <Card key={womenClothing.id} data={womenClothing} />
-          ))}
+          {womenClothings ? (
+            womenClothings.map((womenClothing) => (
+              <Card key={womenClothing.id} data={womenClothing} />
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </section>
     </div>

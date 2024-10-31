@@ -6,7 +6,7 @@
   height: 100%;
   border-radius: 8px;
   background-color: #fff;
-  border: 1px solid var(--color-light-gray);
+  border: 2px solid var(--color-light-gray);
   overflow: hidden;
 }
 
@@ -65,6 +65,9 @@
   background-color: var(--color-light-gray);
 }
 
+.counter button:disabled {
+  cursor: not-allowed;
+}
 .counter input {
   width: 50px;
   text-align: center;

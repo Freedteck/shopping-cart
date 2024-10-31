@@ -1,0 +1,11 @@
+.container {
+  composes: container from "../home/Home.module.css";
+}
+
+.section {
+  composes: section from "../home/Home.module.css";
+}
+
+.row {
+  composes: row from "../home/Home.module.css";
+}

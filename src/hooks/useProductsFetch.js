@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 
-const useBannerFetch = () => {
-  const [data, setData] = useState(null);
+const useProductsFetch = () => {
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://fakestoreapi.com/products/3");
+      const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
-      setData(data);
+      setProducts(data);
       setLoading(false);
     };
+
     fetchData();
   }, []);
 
-  return { data, loading };
+  return { products, loading };
 };
 
-export default useBannerFetch;
+export default useProductsFetch;

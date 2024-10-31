@@ -6,6 +6,24 @@
   border-radius: 8px;
   font-weight: 500;
   font-size: 1rem;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-light-blue);
+  color: var(--color-black);
+}
+
+.btn:disabled {
+  background-color: var(--color-light-gray);
+  color: var(--color-gray);
+  cursor: not-allowed;
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .primary {
@@ -14,15 +32,11 @@
 }
 
 .primary:hover {
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.1);
-}
-
-.primary:active {
-  box-shadow: 0 0 2px rgba(0, 0, 0.2), 0 0 3px rgba(0, 0, 0, 0.1);
-  transform: translateY(1px);
+  background-color: var(--color-light-pink);
+  color: #fff;
 }
 
 .secondary {
-  composes: secondaryBg from "../../styles/colors.module.css";
+  composes: extra-light-neutralBg from "../../styles/colors.module.css";
   composes: btn;
 }
