@@ -64,9 +64,9 @@ const Header = ({ cartItems, setCartItems }) => {
       </nav>
 
       <div className={styles.actions}>
-        <div className={styles.cart}>
+        <div className={styles.cart} onClick={handleShowCart}>
           <span className={styles.badge}>{count}</span>
-          <ShoppingCart size={24} onClick={handleShowCart} />
+          <ShoppingCart size={24} />
         </div>
         <Search size={24} />
         <Button label="Sign In" type="secondary" />
