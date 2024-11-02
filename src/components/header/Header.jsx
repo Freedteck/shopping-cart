@@ -1,6 +1,6 @@
 import { Search, ShoppingCart } from "lucide-react";
 import styles from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ const Header = ({ cartItems, setCartItems }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cartItems) setCount(cartItems.length);
@@ -26,6 +27,11 @@ const Header = ({ cartItems, setCartItems }) => {
 
   const handleShowCart = () => {
     setShowCart((prev) => !prev);
+  };
+
+  const handleCheckout = () => {
+    navigate("checkout");
+    setShowCart(false);
   };
 
   return (
@@ -67,7 +73,11 @@ const Header = ({ cartItems, setCartItems }) => {
       </div>
       {showCart && (
         <div className={styles.cartBox}>
-          <Cart cartItems={cartItems} setCartItems={setCartItems} />
+          <Cart
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            handleClick={handleCheckout}
+          />
         </div>
       )}
     </header>

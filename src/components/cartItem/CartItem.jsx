@@ -11,7 +11,9 @@ const CartItem = ({ item, removeItem }) => {
         <div className={styles.price}>
           <p className={styles.quantity}>{item.count}X</p>
           <p className={styles.amount}>@ ${item.price}</p>
-          <p className={styles.total}>${item.count * item.price}</p>
+          <p className={styles.total}>
+            ${(item.count * item.price).toFixed(2)}
+          </p>
         </div>
       </div>
       <div className={styles.remove} onClick={removeItem}>

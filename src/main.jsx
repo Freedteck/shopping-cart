@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root/Root.jsx";
 import Home from "./routes/home/Home.jsx";
 import Shop from "./routes/shop/Shop.jsx";
+import Login from "./routes/login/Login.jsx";
+import Checkout from "./routes/checkout/Checkout.jsx";
+import { action as checkoutAction } from "./routes/checkout/Checkout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +21,15 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <Shop />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
+        action: checkoutAction,
       },
     ],
   },

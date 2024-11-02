@@ -4,7 +4,7 @@ import CartItem from "../../components/cartItem/CartItem";
 import styles from "./Cart.module.css";
 import PropTypes from "prop-types";
 
-const Cart = ({ cartItems, setCartItems }) => {
+const Cart = ({ cartItems, setCartItems, handleClick }) => {
   const [total, setTotal] = useState(0);
 
   const removeItem = (id) => {
@@ -39,7 +39,11 @@ const Cart = ({ cartItems, setCartItems }) => {
         <h4>Total</h4>
         <p>${total.toFixed(2)}</p>
       </div>
-      <Button label="Checkout" disabled={cartItems.length === 0} />
+      <Button
+        label="Checkout"
+        disabled={cartItems.length === 0}
+        onClick={handleClick}
+      />
     </div>
   );
 };
@@ -55,6 +59,7 @@ Cart.propTypes = {
     })
   ).isRequired,
   setCartItems: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Cart;
