@@ -5,12 +5,15 @@ import Button from "../button/Button";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Cart from "../../routes/cart/Cart";
+import useFetchUser from "../../hooks/useFetchUser";
 
 const Header = ({ cartItems, setCartItems }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [count, setCount] = useState(0);
+  const { user, loading } = useFetchUser();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
 
   useEffect(() => {
     if (cartItems) setCount(cartItems.length);
@@ -21,9 +24,15 @@ const Header = ({ cartItems, setCartItems }) => {
         setIsScrolled(false);
       }
     };
+
+    if (user) {
+      setName(`${user.name.firstname} ${user.name.lastname}`);
+    }
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [cartItems]);
+  }, [cartItems, user]);
 
   const handleShowCart = () => {
     setShowCart((prev) => !prev);
@@ -69,7 +78,7 @@ const Header = ({ cartItems, setCartItems }) => {
           <ShoppingCart size={24} />
         </div>
         <Search size={24} />
-        <Button label="Sign In" type="secondary" />
+        <Button label={loading ? "loading..." : name} type="secondary" />
       </div>
       {showCart && (
         <div className={styles.cartBox}>

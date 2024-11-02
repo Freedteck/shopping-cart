@@ -8,6 +8,7 @@ import Shop from "./routes/shop/Shop.jsx";
 import Login from "./routes/login/Login.jsx";
 import Checkout from "./routes/checkout/Checkout.jsx";
 import { action as checkoutAction } from "./routes/checkout/Checkout.jsx";
+import { loginAction } from "./form-actions/actions.js";
 
 const router = createBrowserRouter([
   {
@@ -23,15 +24,16 @@ const router = createBrowserRouter([
         element: <Shop />,
       },
       {
-        path: "login",
-        element: <Login />,
-      },
-      {
         path: "checkout",
         element: <Checkout />,
         action: checkoutAction,
       },
     ],
+  },
+  {
+    path: "login",
+    element: <Login />,
+    action: loginAction,
   },
 ]);
 
