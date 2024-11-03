@@ -20,10 +20,10 @@ export async function loginAction({ request }) {
       return res.json();
     })
     .then((json) => {
-      localStorage.setItem("token", json.token);
+      sessionStorage.setItem("token", json.token);
       return { success: true, token: json.token };
     })
     .catch((error) => {
       return { success: false, error: error.message };
-    });
+    })
 }

@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 const Root = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(sessionStorage.getItem("token"));
 
   useEffect(() => {
     const handleStorage = () => {
-      setToken(localStorage.getItem("token"));
+      setToken(sessionStorage.getItem("token"));
     };
 
     handleStorage();

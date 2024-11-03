@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if ((actionData?.success && actionData?.token) || token) {
       navigate("/");
     }
