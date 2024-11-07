@@ -1,0 +1,52 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  border: none;
+}
+
+.transfer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.transfer span {
+  color: var(--color-gray);
+  font-weight: 600;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.account h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.number span:hover {
+  cursor: pointer;
+  color: var(--color-orange);
+}
+
+.expiry {
+  font-weight: 400;
+  color: var(--color-gray);
+}
+
+.expiry span {
+  color: red;
+}

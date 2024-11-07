@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
-import Button from "../../components/button/Button";
 import CartItem from "../../components/cartItem/CartItem";
 import styles from "./Checkout.module.css";
-import { Form, useOutletContext } from "react-router-dom";
-
-export async function action() {
-  console.log("checkout");
-  return "Checkout";
-}
+import {
+  Form,
+  useActionData,
+  useNavigate,
+  useOutletContext,
+} from "react-router-dom";
+import CardForm from "../../components/cardForm/CardForm";
+import BankForm from "../../components/BankForm/BankForm";
+import TransferForm from "../../components/transferForm/TransferForm";
+import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
 
 const Checkout = () => {
   const { cartItems, setCartItems } = useOutletContext();
   const [total, setTotal] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState("card");
+  const checkOutAction = useActionData();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cartItems.length) {
@@ -32,46 +38,60 @@ const Checkout = () => {
     setTotal(totalPrice);
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+    setTotal(0);
+    navigate("/");
+  };
+
+  const handlePaymentMethod = (e) => {
+    setPaymentMethod(e.target.id);
+  };
+
   return (
     <div className={styles.container}>
       <h1>Checkout</h1>
       <div className={styles.checkout}>
-        <section className={`${styles.section} ${styles.left}`}>
+        <Form method="post" className={`${styles.section} ${styles.left}`}>
           <h3>Payment</h3>
           <div className={styles.methods}>
             Pay With:
             <div>
-              <input type="radio" name="method" id="card" defaultChecked />
+              <input
+                type="radio"
+                name="method"
+                id="card"
+                value={paymentMethod}
+                checked={paymentMethod === "card"}
+                onChange={handlePaymentMethod}
+              />
               <label htmlFor="card">Card</label>
 
-              <input type="radio" name="method" id="bank" />
+              <input
+                type="radio"
+                name="method"
+                id="bank"
+                value={paymentMethod}
+                checked={paymentMethod === "bank"}
+                onChange={handlePaymentMethod}
+              />
               <label htmlFor="bank">Bank</label>
 
-              <input type="radio" name="method" id="transfer" />
+              <input
+                type="radio"
+                name="method"
+                id="transfer"
+                value={paymentMethod}
+                checked={paymentMethod === "transfer"}
+                onChange={handlePaymentMethod}
+              />
               <label htmlFor="transfer">Transfer</label>
             </div>
           </div>
-          <Form method="post" className={styles.form}>
-            <label>
-              Card Number
-              <input
-                type="text"
-                name="card-number"
-                placeholder="1234  5678  9101  1121"
-                required
-              />
-            </label>
-            <label>
-              Expiry Date
-              <input type="date" name="date" required />
-            </label>
-            <label>
-              CVV
-              <input type="number" name="cvv" placeholder="123" required />
-            </label>
-            <Button label={`Pay $${total.toFixed(2)}`} type="primary" />
-          </Form>
-        </section>
+          {paymentMethod === "card" && <CardForm total={total} />}
+          {paymentMethod === "bank" && <BankForm total={total} />}
+          {paymentMethod === "transfer" && <TransferForm total={total} />}
+        </Form>
 
         <section className={`${styles.section} ${styles.right}`}>
           <h3>Order Summary</h3>
@@ -95,6 +115,9 @@ const Checkout = () => {
           )}
         </section>
       </div>
+      {checkOutAction?.success && (
+        <ConfirmationModal total={total} handleContinueShopping={clearCart} />
+      )}
     </div>
   );
 };

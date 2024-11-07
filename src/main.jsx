@@ -7,8 +7,7 @@ import Home from "./routes/home/Home.jsx";
 import Shop from "./routes/shop/Shop.jsx";
 import Login from "./routes/login/Login.jsx";
 import Checkout from "./routes/checkout/Checkout.jsx";
-import { action as checkoutAction } from "./routes/checkout/Checkout.jsx";
-import { loginAction } from "./form-actions/actions.js";
+import { checkoutAction, loginAction } from "./form-actions/actions.js";
 
 const router = createBrowserRouter([
   {
