@@ -6,3 +6,9 @@
 .children {
   padding: 0 2rem;
 }
+
+@media screen and (max-width: 600px) {
+  .children {
+    padding: 0 1rem;
+  }
+}

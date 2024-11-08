@@ -33,7 +33,7 @@
   gap: 1.5rem;
 }
 
-.login {
+/* .login {
   composes: extra-light-neutralBg from "../../styles/colors.module.css";
   padding: 8px 12px;
   border-radius: 8px;
@@ -46,7 +46,7 @@
 
 .login:active {
   transform: translateY(1px);
-}
+} */
 
 .active {
   color: var(--color-orange);
@@ -76,6 +76,35 @@
 }
 .cartBox {
   position: absolute;
-  right: 0;
+  right: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
   top: 90px;
+  height: 100vh;
+}
+
+@media screen and (max-width: 600px) {
+  .navHeader {
+    padding: 1rem;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .actions {
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .actions button {
+    display: none;
+  }
+
+  .cartBox {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+  }
 }
