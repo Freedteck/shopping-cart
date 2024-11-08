@@ -61,7 +61,7 @@ const Card = ({ data }) => {
   };
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} >
       <div
         className={styles.cardImg}
         style={{
@@ -87,7 +87,7 @@ const Card = ({ data }) => {
               value={value}
               onChange={(e) => handleInput(e)}
             />
-            <button disabled={value === 10}>
+            <button disabled={value === 10} data-testid="plus">
               <PlusIcon onClick={handleIncrement} />
             </button>
           </div>

@@ -73,7 +73,11 @@ const Header = ({ cartItems, setCartItems }) => {
       </nav>
 
       <div className={styles.actions}>
-        <div className={styles.cart} onClick={handleShowCart}>
+        <div
+          className={styles.cart}
+          onClick={handleShowCart}
+          data-testid="cart"
+        >
           <span className={styles.badge}>{count}</span>
           <ShoppingCart size={24} />
         </div>
@@ -81,7 +85,7 @@ const Header = ({ cartItems, setCartItems }) => {
         <Button label={loading ? "loading..." : name} type="secondary" />
       </div>
       {showCart && (
-        <div className={styles.cartBox}>
+        <div className={styles.cartBox} data-testid="carts">
           <Cart
             cartItems={cartItems}
             setCartItems={setCartItems}
